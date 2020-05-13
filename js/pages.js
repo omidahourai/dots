@@ -123,7 +123,7 @@ const showMoodPage = async () => {
 
 const showDotPage = async () => {
 	if(sessionStorage.locationId===undefined) {
-		throw("No location id defined");
+		// throw("No location id defined");
 	}
 
 
