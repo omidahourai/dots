@@ -1,0 +1,569 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dots</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+	<link rel="stylesheet" href="lib/css/jquery.mobile.structure-1.4.5.min.css">
+	<link rel="stylesheet" href="css/app.css">
+
+	<script src="lib/js/jquery-2.2.4.min.js"></script>
+	<script src="js/functions.js"></script>
+	<script src="js/templates.js"></script>
+	<script src="js/login.js"></script>
+	<script src="js/pages.js"></script>
+	<script src="js/maps.js"></script>
+
+	<script src="js/app.js"></script>
+
+	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAbjzieb97H4D0oIQf7eim5Uv4KE5Ql1Xk"
+    async defer></script>
+
+	<link rel="stylesheet" href="https://use.typekit.net/swu1lku.css">
+
+
+
+
+
+</head>
+
+
+<body>
+
+
+<!-- Login / Sign up / Forget password Page */-->
+
+	<section data-role="page" id="login-page">
+
+
+		<div data-role="main" class="display-flex flex-vertical">
+
+			<div class="logo">
+				<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 418.72 140.16"><defs><style>.cls-1{fill:#ea573e;}.cls-2{font-size:183.13px;fill:#f8d26c;font-family:ITCAvantGardeStd-Bold, ITC Avant Garde Gothic Std;font-weight:700;}.cls-3{letter-spacing:-0.02em;}</style></defs><title>logo</title><circle class="cls-1" cx="196.51" cy="86.14" r="27.17"/><text class="cls-2" transform="translate(0 135.51)">D<tspan class="cls-3" x="135.88" y="0">o</tspan><tspan x="255.09" y="0">ts</tspan></text></svg>
+			</div>
+
+			<div class="flex-stretch"></div>
+			<div class="flex-none">
+
+				<form id="login-form" data-ajax="false" style="padding:1em">
+
+
+					<div class="form-control">
+						<label class="form-label" for="login-username">Username</label>
+						<input class="form-input" type="text" placeholder="Type your Username" data-role="none" id="login-username">
+					</div>
+
+
+					<div class="form-control">
+						<label class="form-label" for="login-password">Password</label>
+						<input class="form-input" type="password" placeholder="Type your Password" data-role="none" id="login-password">
+					</div>
+
+
+					<div class="form-control">
+						<input type="submit" class="form-button" value="Login" data-role="none" />
+					</div>
+
+
+					<div class="form-control text-center" style="margin:1em 0">
+						<a href="#signup-page"><small>Sign Up</small></a>
+					</div>
+
+
+				</form>
+			</div>
+		</div>
+		</div>
+	</section >
+
+
+	<section data-role="page" id="signup-page">
+
+		<div data-role="main">
+
+			<form id="signup-form">
+
+				<div class="form-control">
+					<label class="form-label" for="signup-name">
+					Name</label>
+					<input class="form-input" type="text" placeholder="Type your name" data-role="none" id="signup-name">
+				</div>
+
+
+				<div class="form-control">
+					<label class="form-label" for="signup-username">Username</label>
+					<input class="form-input" type="text" placeholder="Type your Username" data-role="none" id="signup-username">
+				</div>
+
+				<div class="form-control">
+					<label class="form-label" for="signup-email">
+					Email</label>
+					<input class="form-input" type="text" placeholder="Type your email" data-role="none" id="signup-email">
+				</div>
+
+
+				<div class="form-control">
+					<label class="form-label" for="signup-password">Password</label>
+					<input class="form-input" type="password" placeholder="Type your Password" data-role="none" id="signup-password">
+				</div>
+
+
+				<div class="form-control">
+					<label class="form-label" for="signup-password2">Password Again</label>
+					<input class="form-input" type="password" placeholder="Type your Password" data-role="none" id="signup-password2">
+				</div>
+
+
+				<div class="form-control">
+					<input type="submit" class="form-button" value="Signup" data-role="none">
+				</div>
+
+
+				<div class="form-control text-center" style="margin:1em 0">
+					<a href="#login-page"><small>Login</small></a>
+				</div>
+
+
+			</form>
+		</div>
+	</section>
+
+
+<!-- Home page (Map page) -->
+
+	<section data-role="page" id="home-page">
+		<div data-role="main">
+
+			<p>muahhhhhhhhhh</p>
+
+			<div class="map"></div>
+
+			<div class="nav-air">
+					<a href="#addnew-page" class="cta-button">Make a dot</a>
+				</div>
+
+		</div>
+		<footer data-role="footer" data-template="#footer-nav-template"></footer>
+	</section>
+
+
+
+			<!-- Add new page -->
+
+			<section data-role="page" id="addnew-page">
+					<header data-role="header" class="ui-header ui-bar-inherit">
+						<ul>
+							<li class="flex-none">
+								<a href="#" data-rel="back">back</a>
+							</li>
+							<li class="flex-stretch"></li>
+							<li class="flex-none">
+							</li>
+						</ul>
+					</header>
+
+					<div data-role="main">
+						<div class="scrollable">
+							<ul class="moodlist"></ul>
+						</div>
+					</div>
+					<!--<div data-role="main">
+						<img src="img/dots/graphics/mood-10.svg">
+						<form>
+							<input type="text" placeholder="Mood Name" data-role="none">
+							<input type="text" placeholder="This is the description of the mood, of the cat. He swag." data-role="none">
+
+						</form>-->
+						<div class="cta-button">
+								<a href="#addmood-page">Add mood</a>
+							</div>
+						</div>
+			</section>
+
+
+<!-- List Page -->
+
+	<section data-role="page" id="list-page">
+
+
+		<div data-role="main">
+			<div class="scrollable">
+				<ul class="moodlist"></ul>
+			</div>
+		</div>
+
+		<div class="cta-button">
+				<a href="#addmood-page">Add mood</a>
+			</div>
+		</div>
+
+		<footer data-role="footer" data-template="#footer-nav-template"></footer>
+
+	</section>
+
+
+
+<!-- Mood Page -->
+
+	<section data-role="page" id="mood-page">
+
+
+		<header data-role="header" class="ui-header ui-bar-inherit">
+			<ul>
+				<li class="flex-none">
+					<a href="#" data-rel="back">back</a>
+				</li>
+				<li class="flex-stretch"></li>
+				<li class="flex-none">
+
+				</li>
+			</ul>
+		</header>
+
+
+		<div data-role="main">
+			<div class="scrollable">
+
+				<div class="profile-image"></div>
+
+				<nav class="profile-nav nav-tabs">
+
+					<ul class="display-flex">
+						<li  class="active"><a href="#">Description</a></li>
+						<li><a href="#">Locations</a></li>
+					</ul>
+
+				</nav>
+
+				<div class="profile-bottom">
+					<div class="profile-content active"></div>
+
+					<div class="profile-map">
+						<div class="map"></div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
+	</section>
+
+
+
+
+
+
+
+		<!-- Add mood page -->
+
+		<section data-role="page" id="addmood-page">
+
+				<header data-role="header" class="ui-header ui-bar-inherit">
+					<h1 class="ui-title">Add Mood</h1>
+					<ul>
+						<li class="flex-none">
+							<a href="#list-page">cancel</a>
+						</li>
+						<li class="flex-stretch title"></li>
+						<li class="flex-none"></li>
+					</ul>
+				</header>
+
+				<div data-role="main">
+
+					<img src="img/dots/graphics/mood-10.svg">
+
+					<form id="list-add-form">
+						<input type="text" placeholder="Mood Name" data-role="none" id="list-add-name">
+
+						<input type="text" placeholder="About this mood.." data-role="none" id="list-add-description">
+
+
+						<h5>Choose Background</h5>
+
+						<div class="form-control">
+						<input type="submit" class="form-button" value="Add Mood" data-role="none">
+						</div>
+
+
+					</form>
+
+				</div>
+
+		</section>
+
+
+
+		<!-- Mood edit page -->
+
+			<section data-role="page" id="moodedit-page">
+
+				<header data-role="header" class="ui-header ui-bar-inherit">
+					<ul>
+						<li class="flex-none">
+							<a href="#" data-rel="back">back</a>
+						</li>
+						<li class="flex-stretch"></li>
+						<li class="flex-none">
+						</li>
+					</ul>
+				</header>
+
+				<div data-role="main">
+
+					<img src="img/dots/graphics/mood-10.svg">
+
+
+
+					<div class="edit-form"></div>
+
+					<div class="cta-button">
+							<a href="#" data-rel="back" class="js-edit-mood">Done</a>
+					</div>
+
+				</div>
+
+			</section>
+
+
+
+
+	<!-- Dot page -->
+
+					<section data-role="page" id="dot-page">
+						<header data-role="header" class="ui-header ui-bar-inherit">
+							<ul>
+								<li class="flex-none">
+									<a href="#" data-rel="back">back</a>
+								</li>
+								<li class="flex-stretch"></li>
+								<li class="flex-none">
+									<a href="#">Delete</a>
+								</li>
+							</ul>
+						</header>
+
+
+						<div data-role="main">
+							<div class="scrollable">
+
+								<!--<div class="profile-image"></div>
+
+								<nav class="profile-nav nav-tabs">
+
+									<ul class="display-flex">
+										<li  class="active"><a href="#">Description</a></li>
+										<li><a href="#">Locations</a></li>
+									</ul>
+
+								</nav>
+
+								<div class="profile-bottom">-->
+									<div class="profile-content active"></div>
+
+									<div class="profile-map" style="display: block;">
+										<div class="map"></div>
+									</div>
+								<!-- </div> -->
+
+
+							</div>
+						</div>
+
+					</section>
+
+
+
+
+		<!-- Add location page -->
+
+					<section data-role="page" id="addlocation-page">
+
+						<header data-role="header" class="ui-header ui-bar-inherit">
+							<h1>Choose Location</h1>
+							<ul>
+								<li class="flex-none">
+									<a href="#" data-rel="back">back</a>
+								</li>
+								<li class="flex-stretch"></li>
+								<li class="flex-none">
+								</li>
+							</ul>
+						</header>
+
+						<div data-role="main">
+
+							<form>
+
+								<label for="description">Description</label>
+								<input type="text" placeholder="Mood Name" data-role="none">
+
+								<label for="favorite">Favorite</label>
+								<input type="checkbox" name="favorite" id="list-add-favorite">
+
+									<label class="form-label" for="list-add-degree">Degree</label>
+									<select class="form-button" id="list-add-degree" data-role="none">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+
+
+
+							</form>
+
+							<input type="hidden" id="add-location-lat" name="">
+							<input type="hidden" id="add-location-lng" name="">
+
+							<div class="map"></div>
+							<div class="marker">
+								<div class="dot"> </div>
+							</div>
+
+
+						</div>
+					</section>
+
+
+
+		<!-- Location edit page -->
+
+			<section data-role="page" id="editlocation-page">
+
+				<header data-role="header" class="ui-header ui-bar-inherit">
+					<ul>
+						<li class="flex-none">
+							<a href="#" data-rel="back">back</a>
+						</li>
+						<li class="flex-stretch"></li>
+						<li class="flex-none">
+						</li>
+					</ul>
+				</header>
+
+				<div data-role="main">
+
+					<img src="img/dots/Graphics/mood-10.svg">
+
+					<form>
+						<input type="text" placeholder="Mood Name" data-role="none">
+						<input type="text" placeholder="Say Somthing.." data-role="none">
+					</form>
+
+
+					<div class="cta-button">
+							<a href="#list-page">Done</a>
+					</div>
+
+				</div>
+			</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Profile page -->
+
+	<section data-role="page" id="profile-page">
+
+		<header data-role="header" class="ui-header ui-bar-inherit">
+			<ul>
+				<li class="flex-none">
+					<a href="#" data-rel="back">back</a>
+				</li>
+				<li class="flex-stretch"></li>
+				<li class="flex-none">
+					<a href="#profile-edit-page">Edit</a>
+				</li>
+			</ul>
+		</header>
+
+		<div data-role="main">
+			<div class="profile-body">
+
+			</div>
+
+			<div class="cta-button">
+				<a href="#" class="js-logout ui-link">Log Out</a>
+			</div>
+
+		</div>
+
+		<footer data-role="footer" data-template="#footer-nav-template"></footer>
+
+	</section>
+
+
+
+<!-- Profile edit page -->
+
+	<section data-role="page" id="profile-edit-page">
+
+
+		<header data-role="header" class="ui-header ui-bar-inherit">
+			<ul>
+				<li class="flex-none">
+					<a href="#" data-rel="back">back</a>
+				</li>
+				<li class="flex-stretch"></li>
+				<li class="flex-none">
+				</li>
+			</ul>
+		</header>
+
+
+		<div data-role="main">
+			<img src="img/placeholder.png">
+			<div class="edit-form"></div>
+
+
+		<div class="cta-button">
+			<a href="#" data-rel="back" class="js-edit-user">Done</a>
+		</div>
+		<div class="secondary-button">
+			<a href="#edit-password-page">Update Password</a>
+		</div>
+
+		</div>
+
+
+	</section>
+
+
+
+
+
+
+	<script type="text/template" id="footer-nav-template">
+	<ul>
+		<li><a href="#home-page">
+			<div class="nav-icon" id="home-nav"><img src="img/dots/icons/icon-09.svg" alt=""></div>
+		</a></li>
+
+		<li><a href="#list-page">
+			<div class="nav-icon" id="list-nav"><img src="img/dots/icons/icon-08.svg" alt=""></div>
+		</a></li>
+
+		<li><a href="#profile-page">
+			<div class="nav-icon" id="profile-nav"><img src="img/dots/icons/icon-07.svg" alt=""></div>
+		</a></li>
+	</ul>
+	</script>
+
+
+
+
+</body>
+</html>
