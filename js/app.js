@@ -79,20 +79,37 @@ $(()=>{
 	})
 
 
-	.on("submit","#list-add-form",function(e){
+	// use async function so we can make synchronous requests with "await"
+	.on("submit","#list-add-form", async function(e){
 		e.preventDefault();
 
-		query({
-			type:'insert_mood',
-			params:[
-				sessionStorage.userId,
-				$("#list-add-name").val(),
-				$("#list-add-description").val()
-			]
-		}).then(d=>{
-			if(d.error) throw d.error;
-			showListPage();
-		})
+		// get variables from the form and session
+		const userId = sessionStorage.userId;
+		const name = $("#list-add-name").val();
+		const description = $("#list-add-description").val();
+
+		try {
+
+			// insert a new mood on the table for the current user
+			await query({
+				type:'insert_mood',
+				params:[userId, name, description]
+			})
+
+			// get the mood we just saved
+			const d = await query({
+				type:'moods_from_user',
+				params:[userId]
+			})
+
+			// set the moodId in the session so we have it on other pages
+			sessionStorage.moodId = d.result[0].id
+
+			// navigate to mood-page and show content using showMoodPage
+			$.mobile.navigate("#mood-page");
+		} catch (e) {
+			throw e
+		}
 	})
 
 
@@ -149,6 +166,22 @@ $(()=>{
 	})
 
 	.on("click",".mood-jump",function(e){
+		if($(this).data("id")===undefined) {
+			throw("No id defined on this element");
+		}
+		sessionStorage.moodId = $(this).data("id");
+	})
+
+	// set the session locationId when we click the "Visit Dot" button in makeHomeWindow
+	.on("click",".location-button",function(e){
+		if($(this).data("id")===undefined) {
+			throw("No id defined on this element");
+		}
+		sessionStorage.locationId = $(this).data("id");
+	})
+
+	// set the session moodId when we click "Edit mood" button in makeMoodProfile
+	.on("click","a[href|='#moodedit-page']",function(e){
 		if($(this).data("id")===undefined) {
 			throw("No id defined on this element");
 		}

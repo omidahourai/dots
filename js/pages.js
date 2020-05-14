@@ -76,48 +76,26 @@ const showMoodPage = async () => {
 		throw("No mood id defined");
 	}
 
-
-
+	// only need to query mood_by_id once
 	query({
 		type:'mood_by_id',
 		params:[sessionStorage.moodId]
 	}).then(d=>{
-
-	console.log(d);
-
-	$("#mood-page .profile-image")
-		.html(makeMoodImage(d.result));
-
+		console.log(d);
+		$("#mood-page .profile-image")
+			.html(makeMoodImage(d.result));
+		$("#mood-page .profile-content")
+			.html(makeMoodProfile(d.result));
 	});
-
-	query({
-		type:'mood_by_id',
-		params:[sessionStorage.moodId]
-	}).then(d=>{
-
-	console.log(d);
-
-	$("#mood-page .profile-content")
-		.html(makeMoodProfile(d.result));
-
-	});
-
 
 	query({
 		type:'locations_from_mood',
 		params:[sessionStorage.moodId]
 	}).then(async d=>{
-			let map_el = await makeMap("#mood-page .map");
-
-			console.log(d);
-
-			makeMarkers(
-				map_el,
-				d.result
-
-				);
-		});
-
+		console.log(d);
+		const map_el = await makeMap("#mood-page .map");
+		makeMarkers(map_el, d.result);
+	});
 }
 
 
@@ -230,6 +208,9 @@ const showMoodEditPage = async () => {
 
 	$("#moodedit-page .edit-form")
 		.html(makeEditMoodForm(d.result[0]))
+	$("#moodedit-page img")
+		.attr('src', d.result[0].img)
+		.css('background', d.result[0].color)
 }
 
 

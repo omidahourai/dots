@@ -52,7 +52,7 @@ const makeMoodProfile = templater(o=>`
 					<a href="#addlocation-page">Make a dot</a>
 			</div>
 			<div class="secondary-button">
-					<a href="#moodedit-page">Edit mood</a>
+					<a href="#moodedit-page" data-id="${o.id}">Edit mood</a>
 			</div>
 
 			<div>
@@ -98,7 +98,7 @@ const makeHomeWindow = templater(o=>`
 				<div><strong>Description</strong> <span>${o.description}</span></div>
 				<div><strong>Favorite</strong> <span>${o.favorite}</span></div>
 				<div>
-					<a href="#dot-page" class="form-button mood-jump" data-id="${o.mid}">Visit Dot</a>
+					<a href="#dot-page" class="form-button location-button" data-id="${o.mid}">Visit Dot</a>
 				</div>
 			</div>
 		</div>
